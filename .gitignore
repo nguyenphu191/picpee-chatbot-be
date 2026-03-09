@@ -1,0 +1,29 @@
+# Python specifics
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Local storage (Important for RAG)
+storage/
+!storage/.gitkeep
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS specifics
+.DS_Store
+Thumbs.db
