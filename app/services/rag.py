@@ -67,7 +67,7 @@ def _call_llm(prompt: str) -> str:
 
 
 async def answer_question(
-    question: str, document_ids: Optional[List[str]] = None, language: str = "vi"
+    question: str, document_ids: Optional[List[str]] = None, language: str = "en"
 ) -> tuple[str, List[ChatSource]]:
     """Thực hiện quy trình RAG."""
 
@@ -90,16 +90,17 @@ async def answer_question(
         context_text = "(Không tìm thấy tài liệu liên quan)"
 
     # 4. Gọi LLM
-    prompt = f"""Bạn là một trợ lý ảo thông minh cho trang web chỉnh sửa ảnh PicPee.
-Hãy trả lời câu hỏi dựa trên Context bên dưới.
-Nếu Context không có thông tin, hãy nói thật là bạn không biết.
+    prompt = f"""You are a smart virtual assistant for the PicPee photo editing website.
+Answer the question based on the Context below.
+If the Context doesn't contain the answer, say you don't know.
+IMPORTANT: Respond in the SAME LANGUAGE as the user's question.
 
-Câu hỏi: {question}
+Question: {question}
 
 Context:
 {context_text}
 
-Trả lời bằng ngôn ngữ: {language}"""
+Response Language: {language}"""
 
     answer = _call_llm(prompt)
 

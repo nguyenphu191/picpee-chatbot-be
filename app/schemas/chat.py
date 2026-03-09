@@ -13,7 +13,7 @@ class ChatSource(BaseModel):
 class ChatRequest(BaseModel):
     question: str
     document_ids: Optional[List[str]] = None
-    language: Optional[str] = "vi"
+    language: Optional[str] = "en"
     conversation_id: Optional[str] = None
 
 
