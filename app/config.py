@@ -30,8 +30,8 @@ class Settings(BaseSettings):
         env="DB_URL",
     )
 
-    # Vector DB (Qdrant, FAISS, ...)
-    vector_db_type: str = Field("qdrant", env="VECTOR_DB_TYPE")
+    # Vector DB (pgvector, Qdrant, ...)
+    vector_db_type: str = Field("pgvector", env="VECTOR_DB_TYPE")
     vector_db_url: str = Field("http://localhost:6333", env="VECTOR_DB_URL")
     vector_db_collection: str = Field(
         "documents_embeddings", env="VECTOR_DB_COLLECTION"
