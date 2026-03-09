@@ -41,8 +41,10 @@ async def get_current_admin_user(current_user: User = Depends(get_current_user))
         )
     return current_user
 
+optional_oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login", auto_error=False)
+
 async def get_optional_current_user(
-    token: Optional[str] = Depends(lambda x: OAuth2PasswordBearer(tokenUrl="auth/login", auto_error=False)(x)), 
+    token: Optional[str] = Depends(optional_oauth2_scheme), 
     db: Session = Depends(get_db)
 ):
     if not token:
